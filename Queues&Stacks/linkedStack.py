@@ -43,33 +43,3 @@ class LinkedStack(IStack):
     def isEmpty(self):
         return self.node is None
 
-
-class TestlinkedStack(unittest.TestCase):
-    def test_init(self):
-        ls = LinkedStack()
-        self.assertTrue(ls.isEmpty())
-        self.assertEqual(ls.size(), 0)
-
-    def test_push(self):
-        ls = LinkedStack()
-        s = "Today"
-        b = "power"
-        ls.push(s)
-        self.assertFalse(ls.isEmpty())
-        self.assertEqual(ls.size(), 1)
-        ls.push(b)
-        self.assertFalse(ls.isEmpty())
-        self.assertEqual(ls.size(), 2)
-
-    def test_push_pop(self):
-        ls = LinkedStack()
-        s = "Today"
-        b = "power"
-        ls.push(s)
-        ls.push(b)
-        self.assertTrue(ls.pop() == "power")
-        self.assertTrue(ls.pop() == "Today")
-
-
-if __name__ == '__main__':
-    unittest.main()

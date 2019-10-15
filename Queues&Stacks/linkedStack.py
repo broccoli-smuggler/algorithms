@@ -1,4 +1,4 @@
-import unittest
+import iStack
 
 
 class Node(object):
@@ -7,21 +7,7 @@ class Node(object):
         self.value = value
 
 
-class IStack(object):
-    def push(self, value):
-        return NotImplementedError
-
-    def pop(self):
-        return NotImplementedError
-
-    def size(self):
-        return NotImplementedError
-
-    def isEmpty(self):
-        return NotImplementedError
-
-
-class LinkedStack(IStack):
+class LinkedStack(iStack.IStack):
     def __init__(self):
         self.stack_size = 0
         self.node = None
@@ -30,6 +16,7 @@ class LinkedStack(IStack):
         old_node = self.node
         self.node = Node(value, old_node)
         self.stack_size += 1
+        return True
 
     def pop(self):
         value = self.node.value

@@ -1,48 +1,38 @@
 import unittest
 import linkedStack
+import arrayStack
 
 
 class TestStacks(unittest.TestCase):
-    stack = None
-
-    def test_init(self):
-        if self.stack:
-            self.assertTrue(self.stack.isEmpty())
-            self.assertEqual(self.stack.size(), 0)
-
-    def test_push(self):
-        if self.stack:
-            s = "Today"
-            b = "power"
-            self.stack.push(s)
-            self.assertFalse(self.stack.isEmpty())
-            self.assertEqual(self.stack.size(), 1)
-            self.stack.push(b)
-            self.assertFalse(self.stack.isEmpty())
-            self.assertEqual(self.stack.size(), 2)
-
-    def test_push_pop(self):
-        if self.stack:
-            s = "Today"
-            b = "power"
-            self.stack.push(s)
-            self.stack.push(b)
-            self.assertTrue(self.stack.pop() == "power")
-            self.assertTrue(self.stack.pop() == "Today")
-
-
-class TestlinkedStack(TestStacks):
     def setUp(self):
-        self.stack = linkedStack.LinkedStack()
+        self.stacks = []
+        self.stacks.append(arrayStack.ArrayStack())
+        self.stacks.append(linkedStack.LinkedStack())
 
     def test_init(self):
-        super().test_init()
+        for stack in self.stacks:
+            self.assertTrue(stack.isEmpty(), msg=stack.__class__)
+            self.assertEqual(stack.size(), 0, msg=stack.__class__)
 
     def test_push(self):
-        super().test_push()
+        for stack in self.stacks:
+            s = "Today"
+            b = "power"
+            stack.push(s)
+            self.assertFalse(stack.isEmpty())
+            self.assertEqual(stack.size(), 1)
+            stack.push(b)
+            self.assertFalse(stack.isEmpty(), msg=stack.__class__)
+            self.assertEqual(stack.size(), 2, msg=stack.__class__)
 
     def test_push_pop(self):
-        super().test_push_pop()
+        for stack in self.stacks:
+            s = "Today"
+            b = "power"
+            stack.push(s)
+            stack.push(b)
+            self.assertTrue(stack.pop() == "power", msg=stack.__class__)
+            self.assertTrue(stack.pop() == "Today", msg=stack.__class__)
 
 
 if __name__ == '__main__':

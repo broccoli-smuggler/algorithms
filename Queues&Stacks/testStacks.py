@@ -34,6 +34,16 @@ class TestStacks(unittest.TestCase):
             self.assertTrue(stack.pop() == "power", msg=stack.__class__)
             self.assertTrue(stack.pop() == "Today", msg=stack.__class__)
 
+    def test_push_pop_many(self):
+        amount = 900000
+        for stack in self.stacks:
+            for i in range(0, amount):
+                stack.push(i)
+
+            for i in range(1, amount+1):
+                a = stack.pop()
+                self.assertTrue(a == amount - i, msg=str(stack.__class__) + str(amount - i) + str(a))
+
 
 if __name__ == '__main__':
     unittest.main()

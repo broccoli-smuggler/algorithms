@@ -8,5 +8,5 @@ class IStack(object):
     def size(self):
         return NotImplementedError
 
-    def isEmpty(self):
+    def is_empty(self):
         return NotImplementedError

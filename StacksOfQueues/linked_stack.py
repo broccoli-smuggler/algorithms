@@ -1,4 +1,4 @@
-import iStack
+from StacksOfQueues.iStack import IStack
 
 
 class Node(object):
@@ -7,7 +7,7 @@ class Node(object):
         self.value = value
 
 
-class LinkedStack(iStack.IStack):
+class LinkedStack(IStack):
     def __init__(self):
         self.stack_size = 0
         self.node = None
@@ -27,6 +27,6 @@ class LinkedStack(iStack.IStack):
     def size(self):
         return self.stack_size
 
-    def isEmpty(self):
+    def is_empty(self):
         return self.node is None
 

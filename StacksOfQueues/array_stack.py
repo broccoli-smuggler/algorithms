@@ -33,13 +33,12 @@ class ArrayStack(iStack.IStack):
         popped = self.values_array[self.index]
         self.values_array[self.index] = None
         # Shrink array
-        if self.index < len(self.values_array)/2:
+        if self.index < len(self.values_array)/4:
             self.new_values_array(len(self.values_array)/2)
         return popped
 
     def size(self):
         return self.index
 
-    def isEmpty(self):
+    def is_empty(self):
         return self.index == 0
-

@@ -1,7 +1,7 @@
-import iStack
+from StacksOfQueues.iStack import IStack
 
 
-class ArrayStack(iStack.IStack):
+class ArrayStack(IStack):
     def __init__(self):
         self.stack_size = 2
         self.values_array = [None] * self.stack_size

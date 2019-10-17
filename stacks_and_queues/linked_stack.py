@@ -1,4 +1,4 @@
-from StacksOfQueues.iStack import IStack
+from interfaces.iStack import IStack
 
 
 class Node(object):

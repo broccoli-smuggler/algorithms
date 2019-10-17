@@ -1,4 +1,7 @@
 import unittest
+from stacks_and_queues.linked_stack import LinkedStack
+from stacks_and_queues.max_stack import MaxStack
+from stacks_and_queues.array_stack import ArrayStack
 
 
 class TestStackBase(unittest.TestCase):
@@ -40,14 +43,34 @@ class TestStackBase(unittest.TestCase):
                 self.assertTrue(a == amount - i, msg=str(self.stack.__class__) + str(amount - i) + str(a))
 
 
+class TestLinkedStack(TestStackBase):
+    def setUp(self):
+        self.stack = LinkedStack()
+
+
+class TestArrayStack(TestStackBase):
+    def setUp(self):
+        self.stack = ArrayStack()
+
+
+class TestMaxStack(TestStackBase):
+    def setUp(self):
+        self.stack = MaxStack()
+
+    def test_get_max(self):
+        self.assertTrue(self.stack.is_empty)
+        self.stack.push(1)
+        self.assertEqual(self.stack.get_max(), 1)
+        self.stack.push(2)
+        self.assertEqual(self.stack.get_max(), 2)
+        self.stack.push(0)
+        self.assertEqual(self.stack.get_max(), 2)
+        self.stack.pop()
+        self.stack.pop()
+        self.assertEqual(self.stack.get_max(), 2)
+        self.stack.pop()
+        self.assertEqual(self.stack.get_max(), 1)
+
+
 if __name__ == '__main__':
-    from test.test_max_stack import TestMaxStack
-
-    def suite():
-        test_suite = unittest.TestSuite()
-        test_suite.addTest(TestMaxStack())
-        return test_suite
-
-    mySuit = suite()
-    runner = unittest.TextTestRunner()
-    runner.run(mySuit)
+    unittest.main()

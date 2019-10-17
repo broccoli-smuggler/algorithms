@@ -1,5 +1,5 @@
-from StacksOfQueues.linked_stack import LinkedStack
-from StacksOfQueues.iStack import IStack
+from stacks_and_queues.linked_stack import LinkedStack
+from interfaces.iStack import IStack
 
 
 class MaxStack(IStack):

@@ -19,6 +19,8 @@ class LinkedStack(IStack):
         return True
 
     def pop(self):
+        if not self.node:
+            return None
         value = self.node.value
         new_node = self.node.next
         self.node = new_node

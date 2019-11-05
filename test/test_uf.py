@@ -1,6 +1,6 @@
 import unittest
 import random
-from union_find.union_find import UnionFind
+from union.union_find import UnionFind
 
 
 class TestUF(unittest.TestCase):
@@ -31,19 +31,20 @@ class TestUF(unittest.TestCase):
         UF.union(2, 3)
         UF.union(3, 4)
         UF.union(3, 300)
-        self.assertTrue(UF.connected(300, 2))
+        self.assertTrue(UF.connected(300, 4))
         self.assertFalse(UF.connected(303, 2))
 
     def test_large(self):
-        size = 40000000
+        size = 400000
         UF = UnionFind(size)
 
-        for i in range(1, 600000):
+        for i in range(1, 60000):
             a = random.randint(0, size - 1)
             b = random.randint(0, size - 1)
 
             UF.union(a, b)
             self.assertTrue(UF.connected(a, b))
+            self.assertTrue(UF.connected(b, a))
 
 
 if __name__ == '__main__':

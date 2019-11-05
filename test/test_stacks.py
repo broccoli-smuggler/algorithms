@@ -11,6 +11,7 @@ class TestStackBase(unittest.TestCase):
         if self.stack:
             self.assertTrue(self.stack.is_empty(), msg=self.stack.__class__)
             self.assertEqual(self.stack.size(), 0, msg=self.stack.__class__)
+            self.assertEqual(self.stack.pop(), None)
 
     def test_push(self):
         if self.stack:

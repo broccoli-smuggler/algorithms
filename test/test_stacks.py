@@ -60,8 +60,8 @@ class TestMaxStack(TestStackBase):
 
     def test_get_max(self):
         self.assertTrue(self.stack.is_empty)
-        self.stack.push(1)
-        self.assertEqual(self.stack.get_max(), 1)
+        self.stack.push(-1)
+        self.assertEqual(self.stack.get_max(), -1)
         self.stack.push(2)
         self.assertEqual(self.stack.get_max(), 2)
         self.stack.push(0)
@@ -70,7 +70,7 @@ class TestMaxStack(TestStackBase):
         self.stack.pop()
         self.assertEqual(self.stack.get_max(), 2)
         self.stack.pop()
-        self.assertEqual(self.stack.get_max(), 1)
+        self.assertEqual(self.stack.get_max(), -1)
 
 
 if __name__ == '__main__':

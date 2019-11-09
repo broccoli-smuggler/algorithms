@@ -1,31 +1,31 @@
 class UnionFind(object):
     def __init__(self, size):
-        self.roots = list(range(0, size))
-        self.depths = [1] * size
+        self._roots = list(range(0, size))
+        self._depths = [1] * size
 
     def __str__(self):
-        return str(self.roots) + str(self.depths)
+        return str(self._roots) + str(self._depths)
 
     # O(1)
     def union(self, a, b):
-        if a >= len(self.roots) or b >= len(self.roots):
+        if a >= len(self._roots) or b >= len(self._roots):
             return
         i = self.get_root(a)
         j = self.get_root(b)
-        if self.depths[i] > self.depths[j]:
-            a_root = self.roots[i]
-            self.roots[j] = a_root
-            self.depths[j] += self.depths[i]
+        if self._depths[i] > self._depths[j]:
+            a_root = self._roots[i]
+            self._roots[j] = a_root
+            self._depths[j] += self._depths[i]
         else:
-            b_root = self.roots[j]
-            self.roots[i] = b_root
-            self.depths[i] += self.depths[j]
+            b_root = self._roots[j]
+            self._roots[i] = b_root
+            self._depths[i] += self._depths[j]
 
     def get_root(self, id):
-        current_root = self.roots[id]
-        while current_root != self.roots[current_root]:
-            self.roots[current_root] = self.roots[self.roots[current_root]]
-            current_root = self.roots[current_root]
+        current_root = self._roots[id]
+        while current_root != self._roots[current_root]:
+            self._roots[current_root] = self._roots[self._roots[current_root]]
+            current_root = self._roots[current_root]
         return current_root
 
     # O(2logN)

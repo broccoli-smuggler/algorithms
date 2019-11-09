@@ -13,6 +13,20 @@ class TestStackBase(unittest.TestCase):
             self.assertEqual(self.stack.size(), 0, msg=self.stack.__class__)
             self.assertEqual(self.stack.pop(), None)
 
+    def test_iter(self):
+        if self.stack:
+            a = 1
+            b = 2
+            c = 3
+            self.stack.push(a)
+            self.stack.push(b)
+            self.stack.push(c)
+            result = []
+
+            for item in self.stack:
+                result.append(item)
+            self.assertEqual([c, b, a], result)
+
     def test_push(self):
         if self.stack:
             s = "Today"

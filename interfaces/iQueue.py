@@ -10,3 +10,11 @@ class IQueue(object):
 
     def size(self):
         return NotImplementedError
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.is_empty():
+            raise StopIteration
+        return self.dequeue()

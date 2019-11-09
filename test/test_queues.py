@@ -12,6 +12,20 @@ class TestQueueBase(unittest.TestCase):
             self.assertEqual(self.queue.size(), 0, msg=self.queue.__class__)
             self.assertEqual(self.queue.dequeue(), None)
 
+    def test_iter(self):
+        if self.queue:
+            a = 1
+            b = 2
+            c = 3
+            self.queue.enqueue(a)
+            self.queue.enqueue(b)
+            self.queue.enqueue(c)
+            result = []
+
+            for item in self.queue:
+                result.append(item)
+            self.assertEqual([a, b, c], result)
+
     def test_enqueue_dequeue(self):
         if self.queue:
             a = "Hello"
